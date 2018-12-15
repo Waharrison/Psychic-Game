@@ -1,0 +1,11 @@
+h1 {
+    font-size: 48px;
+    color:white;
+    text-align: center;
+}
+
+body {
+    background: url(../images/background.jpg);
+    color:white;
+    text-align:center;
+}
