@@ -42,6 +42,7 @@
             Left--;
             LeftSpan.textContent = Left;
         }
+
         
 
         document.onkeyup = function () {
@@ -49,16 +50,17 @@
             var computerGuess = letters[Math.floor(Math.random() * letters.length)];
             console.log(computerGuess);
 
-            var userGuess = event.key.toLowerCase();
+            var userGuess = event.key.toLowerCase(); guessesSoFar.push(userGuess);
             console.log(userGuess);
 
             
 
             if (userGuess === computerGuess) {
-                alert("You Win");
+                alert("You Win I was thinking " + computerGuess + " too");
                 incrementScoreWin();
                 Left = 9;
                 LeftSpan.textContent = 9;
+                guessesSoFar = [];
             }
 
             else if (Left === 0){
@@ -67,10 +69,10 @@
                 alert ("You Lose");
                 
             }
-            else {
+            if (userGuess !== computerGuess) {
                 oneLess();
-                guessesSoFar.push(userGuess);
-
+                guessesSoFarSpan.textContent = userGuess + ", ";
+                
             }
 
 
