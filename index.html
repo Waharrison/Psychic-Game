@@ -34,8 +34,6 @@
         function incrementScoreLose() {
             losses++;
             lossesSpan.textContent = losses;
-            Left = 9;
-            LeftSpan.textContent = 9;
         }
 
         function oneLess() {
@@ -43,36 +41,40 @@
             LeftSpan.textContent = Left;
         }
 
-        
+
 
         document.onkeyup = function () {
 
             var computerGuess = letters[Math.floor(Math.random() * letters.length)];
             console.log(computerGuess);
 
-            var userGuess = event.key.toLowerCase(); guessesSoFar.push(userGuess);
+            var userGuess = event.key.toLowerCase();
             console.log(userGuess);
 
-            
+
 
             if (userGuess === computerGuess) {
-                alert("You Win I was thinking " + computerGuess + " too");
                 incrementScoreWin();
                 Left = 9;
                 LeftSpan.textContent = 9;
                 guessesSoFar = [];
+                alert("You Win I was thinking " + computerGuess + " too");
+
             }
 
-            else if (Left === 0){
+            if (Left === 1) {
                 incrementScoreLose();
+                Left = 9;
+                LeftSpan.textContent = 9;
                 guessesSoFar = [];
-                alert ("You Lose");
-                
+                alert("You Lose because " + userGuess + " was your last guess and I was thinking " + computerGuess);
+
             }
-            if (userGuess !== computerGuess) {
+            else if (userGuess !== computerGuess) {
                 oneLess();
-                guessesSoFarSpan.textContent = userGuess + ", ";
-                
+                guessesSoFar.push(userGuess + "");
+                guessesSoFarSpan.textContent = guessesSoFar;
+
             }
 
 
